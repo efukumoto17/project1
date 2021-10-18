@@ -12,8 +12,18 @@ export default function Home({ allPostsData }) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>Hi! My name is Evan Fukumoto. I'm a 22 year old Cal Poly grad </p>
-
+        <p>Hi! My name is Evan Fukumoto. I'm a 22 year old Cal Poly grad. I'm gonna put some projects up here that may be cool or not. </p>
+      </section>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Projects</h2>
+        <ul className={utilStyles.list}>
+            <li className={utilStyles.listItem} key={1}>
+              <Link href={`/ffb/ffb`}>
+                <a>Fantasy Football Project</a>
+              </Link>
+              <br />
+            </li>
+        </ul>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
