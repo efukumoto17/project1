@@ -1,6 +1,6 @@
 import Layout from "../../components/layout"
 import { getWeekBoxScore, getTeamsAtWeek } from "../../utils/espnClient"
-import Matchup from "../../components/ffb/matchup"
+import Matchup from "../../components/ffb/Matchup"
 import { useState, useEffect } from "react"
 
 
