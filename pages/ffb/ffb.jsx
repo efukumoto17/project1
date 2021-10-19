@@ -1,5 +1,5 @@
 import Layout from "../../components/layout"
-import { getWeekBoxScore, getTeamsAtWeek } from "./espnClient"
+import { getWeekBoxScore, getTeamsAtWeek } from "../../utils/espnClient"
 import Matchup from "../../components/ffb/matchup"
 import { useState, useEffect } from "react"
 
@@ -33,7 +33,7 @@ export default function ffb() {
                console.log(matchup.homeTeamId  + " " + matchup.awayTeamId)
                let homeTeam = findTeam(matchup.homeTeamId)
                let awayTeam = findTeam(matchup.awayTeamId)
-               return <Matchup matchup={matchup} homeTeam={homeTeam} awayTeam={awayTeam}/>
+               return <Matchup key={matchup} matchup={matchup} homeTeam={homeTeam} awayTeam={awayTeam}/>
             })}
          </div>
       </Layout>
