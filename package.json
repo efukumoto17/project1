@@ -8,6 +8,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emotion/react": "^11.5.0",
+    "@emotion/styled": "^11.3.0",
+    "@mui/icons-material": "^5.0.4",
+    "@mui/material": "^5.0.4",
     "date-fns": "^2.11.1",
     "espn-fantasy-football-api": "^0.16.1",
     "gray-matter": "^4.0.2",

@@ -20,6 +20,33 @@ export default function ffb() {
       });
    }, [getWeekBoxScore, getTeamsAtWeek])
 
+   let findTeam = (teamId) => {
+      return teamsAtWeek.find(team => team.id == teamId)
+   }
+
+   let HighestScore = () => {
+      let highestScore = 0
+      let teamId = null
+      let highestScoringTeam = null;
+      boxScore.forEach(matchup => {
+         if (matchup.homeScore > highestScore) {
+            highestScore = matchup.homeScore
+            teamId = matchup.homeTeamId
+         }
+         if (matchup.awayScore > highestScore) {
+            highestScore = matchup.awayScore
+            teamId = matchup.awayTeamId
+         }
+      })
+      highestScoringTeam = findTeam(teamId)
+      return (
+         <div>
+            <h2>Highest Scorer: {highestScoringTeam.name}</h2>
+            <p>{highestScore}</p>
+         </div>
+      )
+   }
+
 
    return (
       <Layout>
@@ -27,14 +54,13 @@ export default function ffb() {
             <h1>Fantasy Football project</h1>
             <h2>Matchups</h2>
             {boxScore && teamsAtWeek && boxScore.map(matchup => {
-               let findTeam = (teamId) => {
-                  return teamsAtWeek.find(team => team.id == teamId)
-               }
+               
                console.log(matchup.homeTeamId  + " " + matchup.awayTeamId)
                let homeTeam = findTeam(matchup.homeTeamId)
                let awayTeam = findTeam(matchup.awayTeamId)
                return <Matchup key={matchup} matchup={matchup} homeTeam={homeTeam} awayTeam={awayTeam}/>
             })}
+           {boxScore && teamsAtWeek &&  <HighestScore />}
          </div>
       </Layout>
    )
