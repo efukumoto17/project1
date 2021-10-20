@@ -1,7 +1,9 @@
 import Layout from "../../components/layout"
 import { getWeekBoxScore, getTeamsAtWeek, getLeagueInfo } from "../../utils/espnClient"
 import Matchup from "../../components/ffb/Matchup"
-import TeamWeek from "../../components/ffb/TeamWeek"
+// import TeamWeek from "../../components/ffb/TeamWeek"
+import HighLowScorers from "../../components/ffb/HighLowScorers"
+import HighLowScoringMatchup from "../../components/ffb/HighLowScoringMatchup"
 
 import Typography from '@mui/material/Typography';
 import { useState, useEffect } from "react"
@@ -56,47 +58,47 @@ export default function ffb() {
       });
    }
 
-   let HighestScore = () => {
-      let high = {id: null, score: 0, roster: null, team: null}
-      let low = {id: null, score: 400, roster: null, team: null}
-      boxScore.forEach(matchup => {
-         if (matchup.homeScore > high.score) {
-            high.score = matchup.homeScore
-            high.id = matchup.homeTeamId
-            high.roster = matchup.homeRoster
-         }
-         if (matchup.awayScore > high.score) {
-            high.score = matchup.awayScore
-            high.id = matchup.awayTeamId
-            high.roster = matchup.awayRoster
-         }
-         if (matchup.homeScore < low.score) {
-            low.score = matchup.homeScore
-            low.id = matchup.homeTeamId
-            low.roster = matchup.homeRoster
-         }
-         if (matchup.awayScore < low.score) {
-            low.score = matchup.awayScore
-            low.id = matchup.awayTeamId
-            low.roster = matchup.awayRoster
-         }
-      })
+   // let HighestScore = () => {
+   //    let high = {id: null, score: 0, roster: null, team: null}
+   //    let low = {id: null, score: 400, roster: null, team: null}
+   //    boxScore.forEach(matchup => {
+   //       if (matchup.homeScore > high.score) {
+   //          high.score = matchup.homeScore
+   //          high.id = matchup.homeTeamId
+   //          high.roster = matchup.homeRoster
+   //       }
+   //       if (matchup.awayScore > high.score) {
+   //          high.score = matchup.awayScore
+   //          high.id = matchup.awayTeamId
+   //          high.roster = matchup.awayRoster
+   //       }
+   //       if (matchup.homeScore < low.score) {
+   //          low.score = matchup.homeScore
+   //          low.id = matchup.homeTeamId
+   //          low.roster = matchup.homeRoster
+   //       }
+   //       if (matchup.awayScore < low.score) {
+   //          low.score = matchup.awayScore
+   //          low.id = matchup.awayTeamId
+   //          low.roster = matchup.awayRoster
+   //       }
+   //    })
       
-      high.team = findTeam(high.id)
-      low.team = findTeam(low.id)
-      return (
-         <div>
-            <div>
-               <Typography variant="h4">Highest Scoring Team</Typography>
-               <TeamWeek team={high.team} roster={high.roster} score={high.score}/>
-            </div>
-            <div>
-               <Typography variant="h4">Lowest Scoring Team</Typography>
-               <TeamWeek team={low.team} roster={low.roster} score={low.score}/>
-            </div>
-         </div>
-      )
-   }
+   //    high.team = findTeam(high.id)
+   //    low.team = findTeam(low.id)
+   //    return (
+   //       <div>
+   //          <div>
+   //             <Typography variant="h4">Highest Scoring Team</Typography>
+   //             <TeamWeek team={high.team} roster={high.roster} score={high.score}/>
+   //          </div>
+   //          <div>
+   //             <Typography variant="h4">Lowest Scoring Team</Typography>
+   //             <TeamWeek team={low.team} roster={low.roster} score={low.score}/>
+   //          </div>
+   //       </div>
+   //    )
+   // }
 
 
 
@@ -123,7 +125,12 @@ export default function ffb() {
                let awayTeam = findTeam(matchup.awayTeamId)
                return <Matchup key={matchup} matchup={matchup} homeTeam={homeTeam} awayTeam={awayTeam}/>
             })}
-           {boxScore && teamsAtWeek &&  <HighestScore />}
+            <h2>High/Low Scorers</h2>
+           {boxScore && teamsAtWeek &&  
+            <HighLowScorers boxScore={boxScore} findTeam={findTeam}/>}
+            <h2>High/Low Scoring Matchups</h2>
+           {boxScore && teamsAtWeek &&  
+            <HighLowScoringMatchup boxScore={boxScore} findTeam={findTeam}/>}
          </div>
       </Layout>
    )

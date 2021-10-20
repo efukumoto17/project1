@@ -5,7 +5,6 @@ import PlayerList from "./PlayerList"
 import { sortRoster } from "../../utils/sortRoster"
 
 export default function TeamWeek({team, roster, score}){
-   console.log("hello")
    return (
       <div>
          <Box>
