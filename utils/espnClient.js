@@ -28,4 +28,8 @@ export const getTeamsAtWeek = async (week) => {
   })
   return teamsAtWeek
 }
-// export default {getWeekBoxScore, getTeamsAtWeek};
+
+export const getLeagueInfo = async () => {
+  let leagueInfo = await myClient.getLeagueInfo({seasonId: seasonId})
+  return leagueInfo
+}
