@@ -11,7 +11,6 @@ const myClient = new Client({
 myClient.setCookies({ espnS2: espn_s2, SWID: SWID });
 
 export const getWeekBoxScore = async (week) => {
-  console.log(myClient)
   let boxScore = await myClient.getBoxscoreForWeek({ 
     seasonId: seasonId, 
     matchupPeriodId: week, 

@@ -6,7 +6,7 @@ export default function PlayerList ({roster}){
 
    let rosterCmps = roster.map((player) => {
       return (
-         <Box key={player.id} display="flex">
+         <Box key={player.player.id +"player"} display="flex">
             <Box flexGrow={1}>
                <Typography variant="body1">{player.position}</Typography>
             </Box>

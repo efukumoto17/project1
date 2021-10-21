@@ -24,9 +24,7 @@ export default function HighLowScoringMatchup({boxScore, findTeam}) {
          low.homeId = matchup.homeTeamId
       }
    })
-   console.log(boxScore)
-   console.log(high)
-   console.log(low)
+
    return (
       <div>
          <Accordion>
