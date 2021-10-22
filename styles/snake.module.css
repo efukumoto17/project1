@@ -1,0 +1,51 @@
+.wrapper {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   height: 100vh;
+ }
+ .canvas {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: rgb(151, 216, 148);
+   position: relative;
+   height: 800px;
+   width: 800px;
+ }
+ 
+ .start {
+   font-size: 1rem;
+   position: absolute;
+   border: 1px solid black;
+   background: none;
+   border-radius: 1rem;
+   padding: 1rem;
+   outline: none;
+ }
+ 
+ .start:hover {
+   border: none;
+   background: white;
+ }
+ 
+ .gameOver {
+   position: absolute;
+   font-size: 5rem;
+   margin-bottom: 10rem;
+ }
+ .points {
+   position: absolute;
+   bottom: 0;
+   right: 1rem;
+   font-size: 2rem;
+ }
+
+ .finishedGame {
+   position: absolute;
+   top: 60px;
+   font-size: 5rem;
+   color: red;
+   text-decoration: underline;
+ }

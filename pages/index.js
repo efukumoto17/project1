@@ -23,6 +23,12 @@ export default function Home({ allPostsData }) {
               </Link>
               <br />
             </li>
+            <li className={utilStyles.listItem} key={1}>
+              <Link href={`/snake/snake`}>
+                <a>Snake Game</a>
+              </Link>
+              <br />
+            </li>
         </ul>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
