@@ -17,3 +17,25 @@ let projectionCategories = [
    "rushingTouchdowns",
    "defensive0PointsAllowed"
 ]
+
+export const sortSeasonTeams = (teams) => {
+   return teams.sort((a, b) => {
+      return a.playoffSeed - b.playoffSeed;
+   })
+}
+
+export const sortRecord = (teams) => {
+   return teams.sort((a, b) => {
+      return b.wins - a.wins;
+   })
+}
+export const sortPointsFor = (teams) => {
+   return teams.sort((a, b) => {
+      return b.pointsFor - a.pointsFor;
+   })
+}
+export const sortPointsAgainst = (teams) => {
+   return teams.sort((a, b) => {
+      return a.pointsAgainst - b.pointsAgainst;
+   })
+}

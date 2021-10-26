@@ -25,6 +25,7 @@ export const getTeamsAtWeek = async (week) => {
     seasonId: seasonId,
     scoringPeriodId: week
   })
+  console.log(teamsAtWeek)
   return teamsAtWeek
 }
 
