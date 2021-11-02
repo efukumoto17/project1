@@ -15,8 +15,6 @@ export default function TeamRoster({roster, boxScoreTeam}) {
             ...boxScoreTeam[index]
          }
       });
-      // mergedRoster = sortRoster(mergedRoster);
-      console.log(mergedRoster)
       setPlayers(sortRoster(mergedRoster));
    }, [roster, boxScoreTeam]);
 
@@ -50,7 +48,6 @@ const Player = ({player}) => {
 
 const calculateProjectedPts = (rawProjectedPts, rawProjectedStats, pos) => {
    let total =0;
-   // console.log(rawProjectedPts)
    if(rawProjectedPts)
       Object.keys(rawProjectedPts).forEach(key => {
          if (typeof rawProjectedPts[key] === 'number') {

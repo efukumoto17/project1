@@ -194,9 +194,6 @@ export default function WeeklyView() {
                awayTeam={findTeam(matchup.awayTeamId)}/>
             }) || <Typography>Loading...</Typography>}
          </Box>
-         {console.log(teamsAtWeek)}
-         {console.log(boxScore)}
-         {console.log(league)}
          <Box sx={{margin:"10px"}}>
             <Box display="flex" justifyContent="center" alignItems="center">
                <Box flexGrow={1}>

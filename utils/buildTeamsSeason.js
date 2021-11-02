@@ -34,7 +34,6 @@ export const buildTeamsSeason = async () => {
       // })
    }
    let week = await getTeamsAtWeek(1)
-   console.log(week)
    week.forEach(team => {
       let teamObj = teams[team.id] || {}
       teamObj.logoURL = team.logoURL

@@ -34,11 +34,9 @@ export default function SeasonView({ setTeam }) {
       const seasonData = await buildTeamsSeason()
       let seasonListData = Object.keys(seasonData).map(key => { 
          return {... seasonData[key]}});
-      console.log(seasonData)
       seasonListData = sortSeasonTeams(seasonListData)
       setSeason(seasonListData)
       const freeAgents = await getFreeAgents()
-      console.log(freeAgents)
    }, [])
 
    let handleSeasonSort = (e) => {

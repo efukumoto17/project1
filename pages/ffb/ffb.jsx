@@ -52,10 +52,6 @@ export default function ffb() {
    const prevPanel = usePrevious(panel)
 
    useEffect(() => {
-      console.log(router.query)
-      console.log(setPanelTo)
-      console.log(prevPanel)
-      console.log(panel)
       if (panel !== setPanelTo && setPanelTo) {
          setPanel(parseInt(setPanelTo))
       }
