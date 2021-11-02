@@ -151,69 +151,78 @@ export default function WeeklyView() {
    return (
       <div>
          <Box sx={{margin:"10px"}}>
-               <Box display="flex" justifyContent="center" alignItems="center">
-                  <Box flexGrow={1}>
-                     <Typography variant="h4">Matchups</Typography>
-                  </Box>
-                  <FormControl>
-                     <InputLabel id="demo-simple-select-label">Week</InputLabel>
-                     <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={week || 1}
-                        onChange={handleWeekChange}>
-                        {weeks}
-                     </Select>
-                  </FormControl>
-                  <FormControl>
-                     <InputLabel id="demo-simple-select-label">Matchup Sort</InputLabel>
-                     <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={matchupSort}
-                        onChange={handleMatchupSort}>
-                        {matchupSortCmps}
-                     </Select>
-                  </FormControl>
+            <Box 
+             display="flex" 
+             justifyContent="center" 
+             alignItems="center"
+             margin="10px">
+               <Box flexGrow={1}>
+                  <Typography variant="h4">Weekly View</Typography>
                </Box>
-               {boxScore && teamsAtWeek && boxScore.map((matchup, i) => {
-                  return <Matchup 
-                  sort={matchupSort}
-                  key={i + "matchup"}
-                  matchup={matchup}
-                  homeTeam={findTeam(matchup.homeTeamId)} 
-                  awayTeam={findTeam(matchup.awayTeamId)}/>
-               }) || <Typography>Loading...</Typography>}
+               <FormControl>
+                  <InputLabel id="demo-simple-select-label">Week</InputLabel>
+                  <Select
+                     labelId="demo-simple-select-label"
+                     id="demo-simple-select"
+                     value={week || 1}
+                     onChange={handleWeekChange}>
+                     {weeks}
+                  </Select>
+               </FormControl>
             </Box>
-            {console.log(teamsAtWeek)}
-            {console.log(boxScore)}
-            {console.log(league)}
-            <Box sx={{margin:"10px"}}>
-               <Box display="flex" justifyContent="center" alignItems="center">
-                  <Box flexGrow={1}>
-                     <Typography variant="h4">Teams</Typography>
-                  </Box>
-                  <FormControl>
-                     <InputLabel id="demo-simple-select-label">Team Sort</InputLabel>
-                     <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={teamSort}
-                        onChange={handleTeamSort}>
-                        {teamSortCmps}
-                     </Select>
-                  </FormControl>
+            <Box display="flex" justifyContent="center" alignItems="center">
+               <Box flexGrow={1}>
+                  <Typography variant="h4">Matchups</Typography>
                </Box>
-               {teamsWeek && teamsWeek.map((team, i) => {
-                  return <TeamWeek
-                     key={i + "team"}
-                     roster={team.roster}
-                     team={findTeam(team.teamId)}
-                     score={team.score}
-                     sort={teamSort}
-                     />
-               }) || <Typography>Loading...</Typography>}
+               <FormControl>
+                  <InputLabel id="demo-simple-select-label">Matchup Sort</InputLabel>
+                  <Select
+                     labelId="demo-simple-select-label"
+                     id="demo-simple-select"
+                     value={matchupSort}
+                     onChange={handleMatchupSort}>
+                     {matchupSortCmps}
+                  </Select>
+               </FormControl>
             </Box>
+            {boxScore && teamsAtWeek && boxScore.map((matchup, i) => {
+               return <Matchup 
+               sort={matchupSort}
+               key={i + "matchup"}
+               matchup={matchup}
+               homeTeam={findTeam(matchup.homeTeamId)} 
+               awayTeam={findTeam(matchup.awayTeamId)}/>
+            }) || <Typography>Loading...</Typography>}
+         </Box>
+         {console.log(teamsAtWeek)}
+         {console.log(boxScore)}
+         {console.log(league)}
+         <Box sx={{margin:"10px"}}>
+            <Box display="flex" justifyContent="center" alignItems="center">
+               <Box flexGrow={1}>
+                  <Typography variant="h4">Teams</Typography>
+               </Box>
+               <FormControl>
+                  <InputLabel id="demo-simple-select-label">Team Sort</InputLabel>
+                  <Select
+                     labelId="demo-simple-select-label"
+                     id="demo-simple-select"
+                     value={teamSort}
+                     onChange={handleTeamSort}>
+                     {teamSortCmps}
+                  </Select>
+               </FormControl>
+            </Box>
+            {teamsWeek && teamsWeek.map((team, i) => {
+               return <TeamWeek
+                  key={i + "team"}
+                  roster={team.roster}
+                  team={findTeam(team.teamId)}
+                  score={team.score}
+                  sort={teamSort}
+                  />
+            }) || <Typography>Loading...</Typography>}
+         </Box>
       </div>
    )
 

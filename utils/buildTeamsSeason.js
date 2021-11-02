@@ -34,9 +34,11 @@ export const buildTeamsSeason = async () => {
       // })
    }
    let week = await getTeamsAtWeek(1)
+   console.log(week)
    week.forEach(team => {
       let teamObj = teams[team.id] || {}
       teamObj.logoURL = team.logoURL
+      teamObj.id = team.id
       teamObj.name = team.name
       teamObj.wins = team.wins
       teamObj.losses = team.losses
@@ -44,6 +46,7 @@ export const buildTeamsSeason = async () => {
       teamObj.pointsFor = team.regularSeasonPointsFor
       teamObj.pointsAgainst = team.regularSeasonPointsAgainst
       teamObj.playoffSeed = team.playoffSeed
+      teamObj.roster = team.roster
       teams[team.id] = teamObj
    })
 

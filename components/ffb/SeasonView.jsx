@@ -1,5 +1,6 @@
 import { buildTeamsSeason } from "../../utils/buildTeamsSeason"
 import TeamSeason from "./TeamSeason"
+import { getFreeAgents } from "../../utils/espnClient"
 import { sortSeasonTeams, sortRecord, sortPointsFor, sortPointsAgainst } from "../../utils/sortTeams"
 
 import { useState, useEffect, useRef } from "react"
@@ -18,7 +19,7 @@ const teamsSorts = [
    "Points Against",
 ]
 
-export default function SeasonView() {
+export default function SeasonView({ setTeam }) {
    const [season, setSeason] = useState(null)
    const [sort, setSort] = useState(teamsSorts[0])
    let sortCmps = []
@@ -33,9 +34,11 @@ export default function SeasonView() {
       const seasonData = await buildTeamsSeason()
       let seasonListData = Object.keys(seasonData).map(key => { 
          return {... seasonData[key]}});
-      console.log(seasonListData)
+      console.log(seasonData)
       seasonListData = sortSeasonTeams(seasonListData)
       setSeason(seasonListData)
+      const freeAgents = await getFreeAgents()
+      console.log(freeAgents)
    }, [])
 
    let handleSeasonSort = (e) => {
@@ -76,7 +79,7 @@ export default function SeasonView() {
                </Select>
             </FormControl>
          </Box>
-         {season && <TeamSeason teams={season} /> ||
+         {season && <TeamSeason teams={season} setTeam={setTeam}/> ||
             <Typography variant="h5">Loading...</Typography>}
       </div>
    )

@@ -8,6 +8,7 @@ let rosterVals = {
    "D/ST": 7,
    "K": 8,
    "Bench": 9,
+   "IR": 10,
 }
 
 export const sortRoster = (roster) => {

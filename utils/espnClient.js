@@ -33,3 +33,16 @@ export const getLeagueInfo = async () => {
   let leagueInfo = await myClient.getLeagueInfo({seasonId: seasonId})
   return leagueInfo
 }
+
+export const getFreeAgents = async () => {
+  let freeAgents = await myClient.getFreeAgents({
+    seasonId: seasonId,
+    scoringPeriodId: 1,
+  })
+  return freeAgents
+}
+
+export const getWeek = async () => {
+  let week = await getTeamsAtWeek(1)
+  return week[0].wins + week[0].losses + week[0].ties
+}

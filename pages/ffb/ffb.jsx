@@ -8,6 +8,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
+import { useRouter } from "next/router";
 
 
 function TabPanel(props) {
@@ -41,13 +42,24 @@ function TabPanel(props) {
      id: `simple-tab-${index}`,
      'aria-controls': `simple-tabpanel-${index}`,
    };
- }
+}
 
 export default function ffb() {
    const [panel, setPanel] = useState(0)
+   const [team, setTeam] = useState(null)
+   const router = useRouter()
+   const {setPanelTo} = router.query
+   const prevPanel = usePrevious(panel)
 
-   useEffect(async () => {
-   }, [])
+   useEffect(() => {
+      console.log(router.query)
+      console.log(setPanelTo)
+      console.log(prevPanel)
+      console.log(panel)
+      if (panel !== setPanelTo && setPanelTo) {
+         setPanel(parseInt(setPanelTo))
+      }
+   }, [setPanelTo, panel, prevPanel])
 
    const handlePanel = (event, newVal) => {
       setPanel(newVal)
@@ -69,7 +81,7 @@ export default function ffb() {
                      <WeeklyView/>
                   </TabPanel>
                   <TabPanel value={panel} index={1}>
-                     <SeasonView/>
+                     <SeasonView />
                   </TabPanel>
                </Box>
             </Box>
